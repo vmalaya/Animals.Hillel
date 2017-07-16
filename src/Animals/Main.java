@@ -1,14 +1,19 @@
 package Animals;
 
 
+import Observers.Director;
+import Observers.Doctor;
+import Observers.Hairdresser;
+
 public class Main {
+    public  static  Dog dog;
     public  static Animal[] init(){
         Animal[] animals = new Animal[8];
         Cat cat = new Cat(1, 2, 3, "black", "Sinus", true);
         animals[0] = cat;
         Fish fish = new Fish(2, 1, 4.6, "gold", "Ribka", false);
         animals[1] = fish;
-        Dog dog = new Dog(3, 5, 45, "Red", "Pluto", true);
+        dog = new Dog(3, 5, 45, "Red", "Pluto", true);
         animals[2] = dog;
         Leon leon = new Leon(1, 8, 50, "Red", true  );
         animals[3] = leon;
@@ -24,7 +29,17 @@ public class Main {
     }
     public static void main(String[] arg) {
         Animal[] zoo = init();
-        for (Animal animal: zoo) {
+        Doctor doctor = new Doctor();
+        Hairdresser hairdresser = new Hairdresser();
+        Director director = new Director();
+        dog.addObserver(doctor);
+        dog.addObserver(hairdresser);
+        dog.addObserver(director);
+        dog.sick();
+        dog.setLongHair();
+        System.out.println(dog.isSick());
+
+      /*  for (Animal animal: zoo) {
             String phrase = animal.getVoice();
             System.out.println(phrase);
             
@@ -37,7 +52,8 @@ public class Main {
         purrables[1]=simba;
         for (Purrable animal: purrables) {
             animal.purr();
-        }
+        }*/
+
 
 
     }

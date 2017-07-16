@@ -1,5 +1,9 @@
 package Animals;
 
+import Observable.Observer;
+import java.util.Date;
+
+
 public class Wild extends  Animal {
     boolean isPredator;
     public Wild(int id, int age, double weight, String color, boolean isPredator){
@@ -18,5 +22,27 @@ public class Wild extends  Animal {
         return  "Hello, I am wild animal. "+ intro;
     }
 
+    Date date = new Date();
+    public  void sick(){
+        super.sick();
+        System.out.println(this.getVoice() + " My id - "+ getId() + " and I am sick."+"( "+ date.toString()+ " )");
+        notifyObservers();
+    }
+    public void hungry() {
+        super.hungry();
+        System.out.println(this.getVoice() + " My id - "+ getId() + " and I am hungry."+"( "+ date.toString()+ " )");
+        notifyObservers();
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
 
 }
