@@ -2,10 +2,11 @@ package Animals;
 import Observable.Observable;
 import Observable.Observer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Animal implements Observable {
+public abstract class Animal implements Observable, Serializable {
     private int id;
     private int age;
     private  double weight;
@@ -21,6 +22,7 @@ public abstract class Animal implements Observable {
 
     }
     public abstract String getVoice();
+
     public int getId(){ return id; }
     public int getAge(){ return age;}
     public double getWeight(){ return  weight;}
