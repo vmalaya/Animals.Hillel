@@ -21,7 +21,27 @@ public abstract class Animal implements Observable, Serializable {
         this.color = color;
 
     }
+
+    public Animal() {
+    }
+
     public abstract String getVoice();
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public int getId(){ return id; }
     public int getAge(){ return age;}
@@ -54,5 +74,15 @@ public abstract class Animal implements Observable, Serializable {
         for (Observer observer: observers) {
             observer.handle(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

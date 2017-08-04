@@ -14,6 +14,18 @@ public class Pet extends  Animal {
         this.name = name;
         this.isVaccinated = isVaccinated;
     }
+    public Pet(){
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setVaccinated(boolean vaccinated) {
+        isVaccinated = vaccinated;
+    }
+
     @Override
     public String getVoice(){
         String introduction = "Hello, my name is " + getName()+". ";
@@ -23,14 +35,8 @@ public class Pet extends  Animal {
     public  String getName(){
         return  name;
     }
-    public  String getVaccinated(){
-        String result;
-        if(isVaccinated){
-            result = "Is Vaccinated";
-        } else {
-            result = " Is not vaccinated";
-        }
-        return result;
+    public  boolean getVaccinated(){
+        return isVaccinated;
         }
     public  void sick(){
         super.sick();
@@ -70,6 +76,13 @@ public class Pet extends  Animal {
         isLongHair = false;
     }
 
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "name='" + name + '\'' +
+                ", isVaccinated=" + isVaccinated +
+                '}';
+    }
 }
 
 
